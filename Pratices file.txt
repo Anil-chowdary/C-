@@ -1,0 +1,229 @@
+using System;
+
+class program
+{
+    static void Main()
+    {
+        Console.WriteLine ("welcome to c sharp training");
+    }
+}   
+----------------------------------------------------------------------------
+
+using System;
+
+class Student
+{
+    public string name;
+    public int age;
+
+    public void DisplayDetails()
+    {
+        Console.WriteLine("Student Name: " + name);
+        Console.WriteLine("Student Age: " + age);
+    }
+}
+
+class Program
+{
+    static void Main(string[] args)
+    {
+        Student s1 = new Student();
+        s1.name = "Anil";
+        s1.age = 22;
+        s1.DisplayDetails();
+    }
+}
+------------------------------------------------------------------------
+
+using System;
+public class Employee
+{
+   
+    private int id;          
+    public string name;      
+    public string department;
+
+    public Employee()
+    {
+        Console.WriteLine("Default Constructor Called");
+        id = 0;
+        name = "Not Assigned";
+        department = "General";
+    }
+
+    public Employee(int id, string name, string department)
+    {
+        Console.WriteLine("Parameterized Constructor Called");
+        this.id = id;             
+        this.name = name;
+        this.department = department;
+    }
+
+    public void DisplayDetails()
+    {
+        Console.WriteLine("Employee ID: " + id);
+        Console.WriteLine("Employee Name: " + name);
+        Console.WriteLine("Department: " + department);
+    }
+
+    public void UpdateID(int newID)
+    {
+        if (newID > 0)
+        {
+            id = newID;
+        }
+        else
+        {
+            Console.WriteLine("Invalid ID. ID must be greater than 0.");
+        }
+    }
+}
+class Program
+{
+    static void Main(string[] args)
+    {
+        Employee emp1 = new Employee();
+        emp1.name = "Anil";               
+        emp1.department = "IT";
+        emp1.UpdateID(101);               
+        emp1.DisplayDetails();            
+
+        Console.WriteLine(); 
+
+        Employee emp2 = new Employee(102, "saiteja", "HR");
+        emp2.DisplayDetails();
+    }
+}
+------------------------------------------------------------------------------------
+Encapsulation
+
+using System;
+
+class BankAccount
+{
+    private double balance;           
+    public string AccountHolder;    
+
+    protected string bankName = "HDFC Bank";
+
+    internal string IFSC = "HDFC000123";     
+
+    public BankAccount(double initialBalance, string name)
+    {
+        balance = initialBalance;
+        AccountHolder = name;
+    }
+
+    public void ShowBalance()
+    {
+        Console.WriteLine($"{AccountHolder}, your balance is: {balance}");
+    }
+}
+
+class Program
+{
+    static void Main()
+    {
+        BankAccount acc = new BankAccount(5000, "Anil");
+        acc.ShowBalance();
+        Console.WriteLine("Bank IFSC: " + acc.IFSC);
+    }
+}
+-----------------------------------------------------------------------------------------
+Abstraction
+
+using System;
+
+public abstract class Person
+{
+    public string Name { get; set; }
+    public int Age { get; set; }
+
+    public abstract void DisplayInfo();
+}
+
+public class Employee : Person
+{
+
+    private int employeeId;
+    public string Department { get; set; }
+
+    public Employee(int id, string name, int age, string dept)
+    {
+        this.employeeId = id;
+        this.Name = name;
+        this.Age = age;
+        this.Department = dept;
+    }
+
+    public void UpdateId(int newId)
+    {
+        if (newId > 0)
+        {
+            employeeId = newId;
+        }
+        else
+        {
+            Console.WriteLine("Invalid ID");
+        }
+    }
+
+    public override void DisplayInfo()
+    {
+        Console.WriteLine($"Employee ID: {employeeId}");
+        Console.WriteLine($"Name: {Name}");
+        Console.WriteLine($"Age: {Age}");
+        Console.WriteLine($"Department: {Department}");
+    }
+}
+
+public class Manager : Person
+{
+    public int TeamSize { get; set; }
+
+    public Manager(string name, int age, int teamSize)
+    {
+        this.Name = name;
+        this.Age = age;
+        this.TeamSize = teamSize;
+    }
+
+    public override void DisplayInfo()
+    {
+        Console.WriteLine($"Manager Name: {Name}");
+        Console.WriteLine($"Age: {Age}");
+        Console.WriteLine($"Team Size: {TeamSize}");
+    }
+}
+
+class Program
+{
+    static void Main(string[] args)
+    {
+        Employee emp = new Employee(101, "Anil", 25, "IT");
+        emp.DisplayInfo();
+
+        Console.WriteLine(); 
+
+        Manager mgr = new Manager("Saiteja", 30, 5);
+        mgr.DisplayInfo();
+
+        Console.WriteLine(); 
+
+        emp.UpdateId(105);
+        emp.DisplayInfo();
+    }
+}
+---------------------------------------------------------------------------------------------
+Inhertaince
+
+public class Vehicle
+{
+    public void Start() => Console.WriteLine("Vehicle started");
+}
+
+public class Bike : Vehicle
+{
+    public void Ride() => Console.WriteLine("Riding bike");
+}
+
