@@ -226,4 +226,150 @@ public class Bike : Vehicle
 {
     public void Ride() => Console.WriteLine("Riding bike");
 }
+------------------------------------------------------------------------------------------------
+Inhertaince and polymorphism:-
+
+using System;
+
+// Base Class
+public class Vehicle
+{
+    public string Brand;
+
+    // Virtual method for runtime polymorphism
+    public virtual void Service()
+    {
+        Console.WriteLine("General Vehicle Service");
+    }
+}
+
+// Derived Class 1
+public class Car : Vehicle
+{
+    public string Model;
+
+    public override void Service()
+    {
+        Console.WriteLine("Car Service: Oil Change, Engine Check, Tire Rotation");
+    }
+}
+
+// Derived Class 2
+public class Bike : Vehicle
+{
+    public string Type;
+
+    public override void Service()
+    {
+        Console.WriteLine("Bike Service: Chain Lubrication, Brake Check");
+    }
+}
+
+// Main Class
+class Program
+{
+    static void Main(string[] args)
+    {
+        Vehicle v1 = new Car();  // Upcasting
+        v1.Brand = "Toyota";
+        v1.Service();  // Calls Car's Service method
+
+        Console.WriteLine();
+
+        Vehicle v2 = new Bike();  // Upcasting
+        v2.Brand = "Yamaha";
+        v2.Service();  // Calls Bike's Service method
+    }
+}
+-------------------------------------------------------------------------------------------------------------------
+
+Constructors:-
+
+using System;
+
+public class Employee
+{
+    // Fields
+    private int id;
+    private string name;
+    private string department;
+    private static string companyName;
+
+    // Static Constructor - called once when the class is first used
+    static Employee()
+    {
+        companyName = "Tech Solutions Pvt Ltd";
+        Console.WriteLine("Static Constructor: Company Initialized");
+    }
+
+    // Default Constructor
+    public Employee()
+    {
+        id = 0;
+        name = "Not Assigned";
+        department = "General";
+        Console.WriteLine("Default Constructor Called");
+    }
+
+    // Parameterized Constructor
+    public Employee(int id, string name, string department)
+    {
+        this.id = id;
+        this.name = name;
+        this.department = department;
+        Console.WriteLine("Parameterized Constructor Called");
+    }
+
+    // Copy Constructor
+    public Employee(Employee emp)
+    {
+        this.id = emp.id;
+        this.name = emp.name;
+        this.department = emp.department;
+        Console.WriteLine("Copy Constructor Called");
+    }
+
+    //  Method to Display Employee Info
+    public void Display()
+    {
+        Console.WriteLine($"\nEmployee Info:\nID: {id}\nName: {name}\nDepartment: {department}\nCompany: {companyName}");
+    }
+}
+
+//  Main Program
+class Program
+{
+    static void Main(string[] args)
+    {
+        //  Using Default Constructor
+        Employee emp1 = new Employee();
+        emp1.Display();
+
+        //  Using Parameterized Constructor
+        Employee emp2 = new Employee(101, "Anil", "IT");
+        emp2.Display();
+
+        // Using Copy Constructor
+        Employee emp3 = new Employee(emp2);
+        emp3.Display();
+    }
+}
+
+---------------------------------------------------------------------------------------------------------------------
+Syntaxes
+
+
+using namespace_;
+namespace new_namespace {
+}
+using new_namespace ;
+access_modifier class class_name{}
+access_modifier datatype variable_name;
+access_modifier void,int method_name(without parameter, with parameters){};
+class_name ob1 = new class_name()
+
+-------------------------------------------------------------------------------------------------------------------------
+
+
+
 
